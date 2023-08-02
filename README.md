@@ -1,3 +1,8 @@
+# Intrusion warning
+- Reference from MiAI channel: https://www.youtube.com/watch?v=fd0WrwnPhtg&t=1199s
+- Using YOLOv5
+
+# Instruction
 - Clone repository
 ```
 git clone https://github.com/npk7264/Intrusion-warning.git
