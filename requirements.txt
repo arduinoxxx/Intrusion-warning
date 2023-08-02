@@ -1,0 +1,10 @@
+opencv-python
+numpy
+pandas
+imutils
+python-telegram-bot
+torch
+shapely
+pillow
+ultralytics
+requests
