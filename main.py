@@ -7,7 +7,8 @@ from YOLO_detect import YOLO
 # List points of polygon
 points = []
 
-def handle_left_click(event, x, y, flags, points):
+# Utils
+def add_point_polygon(event, x, y, flags, points):
     if event == cv2.EVENT_LBUTTONDOWN:
         points.append([x, y])
 
@@ -34,10 +35,10 @@ while True:
     frame = video.read()
     frame = cv2.flip(frame, 1)
 
-    # Draw polygon
+    # Draw polygon, dont't need if you want to set fixed points
     frame = draw_polygon(frame, points)
 
-    # If you dont't want to draw polygon, you can set points
+    # If you dont't want to draw polygon, you can set fixed points
     # detect = True
     # points = [(0, 0), (0, width), (-height, width), (-height, 0)]
 
@@ -57,7 +58,7 @@ while True:
 
     # Show frame
     cv2.imshow('Intrusion Warning', frame)
-    cv2.setMouseCallback('Intrusion Warning', handle_left_click, points)
+    cv2.setMouseCallback('Intrusion Warning', add_point_polygon, points)
 
 video.stop()
 cv2.destroyAllWindows()
