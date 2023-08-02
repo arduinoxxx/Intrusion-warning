@@ -22,6 +22,8 @@ def draw_polygon(frame, points):
 
 # Camera
 video = VideoStream(src=0).start()
+frame = video.read()
+height, width, channels = frame.shape
 
 # Model
 model = YOLO()
@@ -34,6 +36,10 @@ while True:
 
     # Draw polygon
     frame = draw_polygon(frame, points)
+
+    # If you dont't want to draw polygon, you can set points
+    # detect = True
+    # points = [(0, 0), (0, width), (-height, width), (-height, 0)]
 
     # Detect decision
     if detect:

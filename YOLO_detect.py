@@ -15,9 +15,10 @@ def isInside(points, centroid):
 def draw_bbox(frame, xmin, ymin, xmax, ymax, confidence, class_name):
     start_point = (xmin, ymax)
     end_point = (xmax, ymin)
-    color = (255, 0, 0)
-    result = cv2.rectangle(frame, np.int32(start_point), np.int32(end_point), color, 2)
-    result = cv2.putText(frame, str(confidence), (int(np.mean([xmin, xmax])), int(ymin + 10)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 1)
+    color1 = (255, 0, 0)
+    color2 = (0, 255, 0)
+    result = cv2.rectangle(frame, np.int32(start_point), np.int32(end_point), color1, 2)
+    result = cv2.putText(frame, str(confidence), (int(np.mean([xmin, xmax])), int(ymin + 10)), cv2.FONT_HERSHEY_SIMPLEX, 1, color2, 2)
     return result
 
 class YOLO():
@@ -31,7 +32,6 @@ class YOLO():
                 xmin, ymin, xmax, ymax, confidence, class_name = obj
                 if int(class_name) == 0:
                     frame = draw_bbox(frame, xmin, ymin, xmax, ymax, confidence, class_name)
-                    # Tinh toan centroid
                     centroid = (int(np.mean([xmin, xmax])), int(np.mean([ymin, ymax])))
                     cv2.circle(frame, centroid, 5, (0, 0, 255), -1)
 
